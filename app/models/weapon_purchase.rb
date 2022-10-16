@@ -1,0 +1,2 @@
+class WeaponPurchase < ApplicationRecord
+end

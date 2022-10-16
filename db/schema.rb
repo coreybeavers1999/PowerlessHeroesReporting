@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_16_130746) do
-  create_table "testing_databases", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2022_10_16_140416) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "weapon_purchases", force: :cascade do |t|
     t.string "name"
-    t.string "password"
-    t.integer "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_16_172751) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_16_215621) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_172751) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "weapon_damages", force: :cascade do |t|
+    t.bigint "weapon_id", null: false
+    t.float "damage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["weapon_id"], name: "index_weapon_damages_on_weapon_id"
   end
 
   create_table "weapon_purchases", force: :cascade do |t|
@@ -36,6 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_172751) do
     t.index ["weapon_category_id"], name: "index_weapons_on_weapon_category_id"
   end
 
+  add_foreign_key "weapon_damages", "weapons"
   add_foreign_key "weapon_purchases", "weapons"
   add_foreign_key "weapons", "weapon_categories"
 end

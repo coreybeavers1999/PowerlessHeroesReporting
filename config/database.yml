@@ -10,17 +10,17 @@ default: &default
   timeout: 5000
 
 #development:
-#  <<: *default
-#  url: postgresql://localhost:5432/powerless_heroes_reporting
+#  adapter: postgresql
+#  encoding: unicode
+#  database: ddepoigpsb447m
+#  pool: 1
+#  username: qwvwklsiuucpwn
+#  password: 709893753a47adb60ddea7615b0a8aca336db8dec8dbf381fa17d5af8d3147a8
+#  host: ec2-54-160-200-167.compute-1.amazonaws.com
 
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: ddepoigpsb447m
-  pool: 1
-  username: qwvwklsiuucpwn
-  password: 709893753a47adb60ddea7615b0a8aca336db8dec8dbf381fa17d5af8d3147a8
-  host: ec2-54-160-200-167.compute-1.amazonaws.com
+  <<: *default
+  url: postgres://qwvwklsiuucpwn:709893753a47adb60ddea7615b0a8aca336db8dec8dbf381fa17d5af8d3147a8@ec2-54-160-200-167.compute-1.amazonaws.com:5432/ddepoigpsb447m
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -31,4 +31,4 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  url: postgres://qwvwklsiuucpwn:709893753a47adb60ddea7615b0a8aca336db8dec8dbf381fa17d5af8d3147a8@ec2-54-160-200-167.compute-1.amazonaws.com:5432/ddepoigpsb447m

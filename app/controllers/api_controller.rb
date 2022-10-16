@@ -34,4 +34,18 @@ class ApiController < ApplicationController
 
   end
 
+  def submit_purchases
+
+    purchases = params[:purchases]
+
+    purchases.each do |p|
+      # Create Purchase
+      this_purchase = WeaponPurchase.new
+      this_purchase.weapon_id = Weapon.find_by('name = ?', p.name).id
+      this_purchase.wave_purchased = p.wave_purchased
+      this_purchase.save
+    end
+
+  end
+
 end

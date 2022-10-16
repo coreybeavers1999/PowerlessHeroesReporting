@@ -1,2 +1,13 @@
-<h1>This is the home Powerless Heroes page.</h1>
-There are currently <%= @weapon_count %> weapons in the game.
+</br>
+</br>
+
+<h1 class="text-center">Weapon Info</h1>
+</br>
+
+<!--Gun List-->
+<h5>Gun List</h5>
+<div class="list-group">
+  <% @weapon_list.each do |w| %>
+    <a href="#" class="list-group-item list-group-item-action"><%= w.name %></a>
+  <% end %>
+</div>

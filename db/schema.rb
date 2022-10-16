@@ -10,14 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_16_140416) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_16_172751) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "weapon_purchases", force: :cascade do |t|
+  create_table "weapon_categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "weapon_purchases", force: :cascade do |t|
+    t.bigint "weapon_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "wave_purchased"
+    t.index ["weapon_id"], name: "index_weapon_purchases_on_weapon_id"
+  end
+
+  create_table "weapons", force: :cascade do |t|
+    t.string "name"
+    t.bigint "weapon_category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["weapon_category_id"], name: "index_weapons_on_weapon_category_id"
+  end
+
+  add_foreign_key "weapon_purchases", "weapons"
+  add_foreign_key "weapons", "weapon_categories"
 end

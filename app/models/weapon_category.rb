@@ -1,0 +1,2 @@
+class WeaponCategory < ApplicationRecord
+end

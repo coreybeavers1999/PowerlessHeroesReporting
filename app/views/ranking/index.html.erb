@@ -16,6 +16,11 @@
       border-color: #626262;
   }
 
+  .image {
+      align-items: center;
+      min-width: 50px;
+  }
+
 </style>
 
 </br>
@@ -29,18 +34,18 @@
 <!--  Headers-->
   <ul class="list-group list-group-horizontal">
     <li class="list-group-item index-number bg-dark header">#</li>
-    <li class="list-group-item bg-dark header" style="width:55%">Weapon</li>
-    <li class="list-group-item bg-dark header" style="width:20%; text-align:right">Purchases</li>
-    <li class="list-group-item bg-dark header" style="width:20%; text-align:right">Damage Dealt</li>
+    <li class="list-group-item bg-dark header" style="width:50%">Weapon</li>
+    <li class="list-group-item bg-dark header" style="width:25%; text-align:right">Purchases</li>
+    <li class="list-group-item bg-dark header" style="width:25%; text-align:right">Damage Dealt</li>
   </ul>
 
 <!--  Each Weapon-->
     <% @weapons.each_with_index do |w, index| %>
       <ul class="list-group list-group-horizontal">
         <li href="#" class="list-group-item index-number no-border list-group-item-action"><%= index + 1 %></li>
-        <li class="list-group-item no-border list-group-item-action" style="width:55%"><%= w.name %></li>
-        <li class="list-group-item no-border list-group-item-action" style="width:20%; text-align:right"><%= w.purchases %></li>
-        <li class="list-group-item no-border list-group-item-action" style="width:20%; text-align:right"><%= w.damage %></li>
+        <li class="list-group-item no-border list-group-item-action" style="width:50%"><img class="image" src="https://res.cloudinary.com/hrwvejxix/image/upload/v1666047415/Weapons/Pistols/spr_store_sidekick_v1cysg.png" alt=""><%= w.name %></li>
+        <li class="list-group-item no-border list-group-item-action" style="width:25%; text-align:right"><%= w.purchases %></li>
+        <li class="list-group-item no-border list-group-item-action" style="width:25%; text-align:right"><%= w.damage %></li>
       </ul>
     <% end %>
 </div>

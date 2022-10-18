@@ -13,6 +13,18 @@
 <h1 class="text-center">Weapon Info</h1>
 </br>
 
+
+<!--Game Session-->
+<h5>Game Session List</h5>
+<div class="list-group">
+  <% @game_list.each do |g| %>
+    <a href="#" class="list-group-item list-group-item-action"><%= g.map %></a>
+  <% end %>
+</div>
+
+</br>
+</br>
+
 <!--Gun List-->
 <h5>Gun List</h5>
 <div class="list-group">

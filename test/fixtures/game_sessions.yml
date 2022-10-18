@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  map: MyString
+  version: MyString
+
+two:
+  map: MyString
+  version: MyString

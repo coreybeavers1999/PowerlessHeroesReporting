@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   # API
   post '/add_weapon' => 'api#add_all_weapons'
   post '/submit_purchases' => 'api#submit_purchases'
+  post '/submit_game_start' => 'api#submit_game_start'
 end

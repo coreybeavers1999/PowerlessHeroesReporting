@@ -57,4 +57,10 @@ class ApiController < ApplicationController
 
   end
 
+  def submit_game_start
+
+    game_info = params[:game_info]
+
+  end
+
 end

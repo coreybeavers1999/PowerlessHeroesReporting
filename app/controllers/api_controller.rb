@@ -59,7 +59,9 @@ class ApiController < ApplicationController
 
   def submit_game_start
 
-    game_info = params[:game_info]
+    session = GameSession.new
+    session.map = params[:mapName]
+    session.save
 
   end
 

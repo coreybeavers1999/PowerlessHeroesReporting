@@ -36,13 +36,21 @@ class ApiController < ApplicationController
 
   def submit_purchases
 
-    purchases = params[:purchases]
+    purchases = params[:weapons]
 
-    purchases.each do |p|
+    # Error Catching
+    if purchases.nil? then
+      render json: { message: 'Nothing was submitted' }
+      return
+    end
+
+    puts purchases.to_yaml
+
+    purchases.each_with_index do |p, index|
       # Create Purchase
       this_purchase = WeaponPurchase.new
-      this_purchase.weapon_id = Weapon.find_by('name = ?', p.name).id
-      this_purchase.wave_purchased = p.wave_purchased
+      this_purchase.weapon_id = Weapon.find_by('name = ?', params[:weapons][index][:name]).id
+      this_purchase.wave_purchased =  params[:weapons][index][:wave_purchased]
       this_purchase.save
     end
 

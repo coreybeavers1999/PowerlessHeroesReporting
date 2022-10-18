@@ -1,3 +1,12 @@
+<style>
+
+    .image {
+        align-items: center;
+        max-width: 50px;
+    }
+
+</style>
+
 </br>
 </br>
 
@@ -8,6 +17,6 @@
 <h5>Gun List</h5>
 <div class="list-group">
   <% @weapon_list.each do |w| %>
-    <a href="#" class="list-group-item list-group-item-action"><%= w.name %></a>
+    <a href="#" class="list-group-item list-group-item-action"><img class="image" src="<%= w.image_url %>" alt=""><%= w.name %></a>
   <% end %>
 </div>

@@ -51,6 +51,7 @@ class ApiController < ApplicationController
       this_purchase = WeaponPurchase.new
       this_purchase.weapon_id = Weapon.find_by('name = ?', params[:weapons][index][:name]).id
       this_purchase.wave_purchased =  params[:weapons][index][:wave_purchased]
+      this_purchase.cheated = params[:weapons][index][:cheated]
       this_purchase.save
     end
 

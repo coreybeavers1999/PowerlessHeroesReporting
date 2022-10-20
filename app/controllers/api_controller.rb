@@ -64,7 +64,7 @@ class ApiController < ApplicationController
     session.active = true
     session.save
 
-    render json: { id: session.id }
+    render plain: session.id
 
   end
 

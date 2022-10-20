@@ -17,8 +17,18 @@
 <!--Game Session-->
 <h5>Game Session List</h5>
 <div class="list-group">
-  <% @game_list.each do |g| %>
-    <a href="#" class="list-group-item list-group-item-action"><%= g.map %></a>
+  <!--  Headers-->
+  <ul class="list-group list-group-horizontal">
+    <li class="list-group-item bg-dark header" style="width:50%; text-align:center; color:white; font-weight:bold">Map</li>
+    <li class="list-group-item bg-dark header" style="width:50%; text-align:center; color:white; font-weight:bold">Time</li>
+  </ul>
+
+  <!--  Each Weapon-->
+  <% @game_list.each_with_index do |g, index| %>
+    <ul class="list-group no-border list-group-horizontal">
+      <li class="list-group-item no-border" style="width:50%; text-align:left"><%= g[0] %></li>
+      <li class="list-group-item no-border" style="width:50%; text-align:right"><%= g[1] %></li>
+    </ul>
   <% end %>
 </div>
 

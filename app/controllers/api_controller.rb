@@ -57,10 +57,21 @@ class ApiController < ApplicationController
 
   end
 
-  def submit_game_start
+  def open_game_session
 
     session = GameSession.new
-    session.map = params[:mapName]
+    session.map = params[:map]
+    session.active = true
+    session.save
+
+    render json: { id: session.id }
+
+  end
+
+  def close_game_session
+
+    session = GameSession.find(params[:id])
+    session.active = false
     session.save
 
   end

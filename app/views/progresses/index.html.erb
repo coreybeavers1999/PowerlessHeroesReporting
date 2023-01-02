@@ -1,0 +1,247 @@
+<p style="color: green"><%= notice %></p>
+
+<%= link_to new_progress_path do %>
+    <%= image_tag 'new.png', height: '32' %>
+<% end %>
+
+<br/><br/>
+
+<div>
+  <h3>Maps <%= @maps_progress %></h3>
+  <table class="table table-sm table-striped">
+    <thead class="table-dark">
+      <tr>
+        <td width="70%">Description</td>
+        <td width="15%">Time (Days)</td>
+        <td width="15%" style="text-align: center">Complete</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @maps.each do |p| %>
+        <tr>
+          <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
+          <td><%= p.expected_days %></td>
+          <td align="center">
+            <%= link_to update_progress_path(p.id) do %>
+              <% if p.complete %>
+                <%= image_tag 'checked.png', size: '28' %>
+              <% else %>
+                <%= image_tag 'unchecked.png', size: '28' %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div> <!-- Maps -->
+
+<div>
+  <h3>Models <%= @models_progress %></h3>
+  <table class="table table-sm table-striped">
+    <thead class="table-dark">
+    <tr>
+      <td width="70%">Description</td>
+      <td width="15%">Time (Days)</td>
+      <td width="15%" style="text-align: center">Complete</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @models.each do |p| %>
+      <tr>
+        <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
+        <td><%= p.expected_days %></td>
+        <td align="center">
+          <%= link_to update_progress_path(p.id) do %>
+            <% if p.complete %>
+              <%= image_tag 'checked.png', size: '28' %>
+            <% else %>
+              <%= image_tag 'unchecked.png', size: '28' %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div> <!-- Models -->
+
+<div>
+  <h3>Audio <%= @audio_progress %></h3>
+  <table class="table table-sm table-striped">
+    <thead class="table-dark">
+    <tr>
+      <td width="70%">Description</td>
+      <td width="15%">Time (Days)</td>
+      <td width="15%" style="text-align: center">Complete</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @audio.each do |p| %>
+      <tr>
+        <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
+        <td><%= p.expected_days %></td>
+        <td align="center">
+          <%= link_to update_progress_path(p.id) do %>
+            <% if p.complete %>
+              <%= image_tag 'checked.png', size: '28' %>
+            <% else %>
+              <%= image_tag 'unchecked.png', size: '28' %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div> <!-- Audio -->
+
+<div>
+  <h3>Cutscenes <%= @cutscenes_progress %></h3>
+  <table class="table table-sm table-striped">
+    <thead class="table-dark">
+    <tr>
+      <td width="70%">Description</td>
+      <td width="15%">Time (Days)</td>
+      <td width="15%" style="text-align: center">Complete</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @cutscenes.each do |p| %>
+      <tr>
+        <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
+        <td><%= p.expected_days %></td>
+        <td align="center">
+          <%= link_to update_progress_path(p.id) do %>
+            <% if p.complete %>
+              <%= image_tag 'checked.png', size: '28' %>
+            <% else %>
+              <%= image_tag 'unchecked.png', size: '28' %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div> <!-- Cutscenes -->
+
+<div>
+  <h3>Enemies <%= @enemies_progress %></h3>
+  <table class="table table-sm table-striped">
+    <thead class="table-dark">
+    <tr>
+      <td width="70%">Description</td>
+      <td width="15%">Time (Days)</td>
+      <td width="15%" style="text-align: center">Complete</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @enemies.each do |p| %>
+      <tr>
+        <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
+        <td><%= p.expected_days %></td>
+        <td align="center">
+          <%= link_to update_progress_path(p.id) do %>
+            <% if p.complete %>
+              <%= image_tag 'checked.png', size: '28' %>
+            <% else %>
+              <%= image_tag 'unchecked.png', size: '28' %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div> <!-- Enemies -->
+
+<div>
+  <h3>Features <%= @features_progress %></h3>
+  <table class="table table-sm table-striped">
+    <thead class="table-dark">
+    <tr>
+      <td width="70%">Description</td>
+      <td width="15%">Time (Days)</td>
+      <td width="15%" style="text-align: center">Complete</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @features.each do |p| %>
+      <tr>
+        <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
+        <td><%= p.expected_days %></td>
+        <td align="center">
+          <%= link_to update_progress_path(p.id) do %>
+            <% if p.complete %>
+              <%= image_tag 'checked.png', size: '28' %>
+            <% else %>
+              <%= image_tag 'unchecked.png', size: '28' %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div> <!-- Features -->
+
+<div>
+  <h3>Models <%= @heroes_progress %></h3>
+  <table class="table table-sm table-striped">
+    <thead class="table-dark">
+    <tr>
+      <td width="70%">Description</td>
+      <td width="15%">Time (Days)</td>
+      <td width="15%" style="text-align: center">Complete</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @heroes.each do |p| %>
+      <tr>
+        <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
+        <td><%= p.expected_days %></td>
+        <td align="center">
+          <%= link_to update_progress_path(p.id) do %>
+            <% if p.complete %>
+              <%= image_tag 'checked.png', size: '28' %>
+            <% else %>
+              <%= image_tag 'unchecked.png', size: '28' %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div> <!-- Heroes -->
+
+<div>
+  <h3>UI <%= @ui_progress %></h3>
+  <table class="table table-sm table-striped">
+    <thead class="table-dark">
+    <tr>
+      <td width="70%">Description</td>
+      <td width="15%">Time (Days)</td>
+      <td width="15%" style="text-align: center">Complete</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @ui.each do |p| %>
+      <tr>
+        <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
+        <td><%= p.expected_days %></td>
+        <td align="center">
+          <%= link_to update_progress_path(p.id) do %>
+            <% if p.complete %>
+              <%= image_tag 'checked.png', size: '28' %>
+            <% else %>
+              <%= image_tag 'unchecked.png', size: '28' %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div> <!-- UI -->

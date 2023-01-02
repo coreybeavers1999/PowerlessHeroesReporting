@@ -1,5 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
+<div style="width: 100%; text-align: center;">
+  <h2>
+    <%= @total_progress %>
+  </h2>
+</div>
+
 <%= link_to new_progress_path do %>
     <%= image_tag 'new.png', height: '32' %>
 <% end %>

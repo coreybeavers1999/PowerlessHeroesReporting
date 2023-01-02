@@ -13,6 +13,9 @@ class ProgressesController < ApplicationController
     @ui = Progress.all.where(category: 'ui').order(:description)
     
     # Percent Variables
+    total_complete_days = 0.0
+    total_days = 0.0
+
     maps_complete_days = 0.0
     models_complete_days = 0.0
     audio_complete_days = 0.0
@@ -33,43 +36,59 @@ class ProgressesController < ApplicationController
     
     # Get Info From Records
     @maps.each do |m|
+      total_days += m.expected_days
       maps_total_days += m.expected_days
       maps_complete_days += m.expected_days if(m.complete)
+      total_complete_days += m.expected_days if(m.complete)
     end
 
     @models.each do |m|
+      total_days += m.expected_days
       models_total_days += m.expected_days
       models_complete_days += m.expected_days if(m.complete)
+      total_complete_days += m.expected_days if(m.complete)
     end
 
     @audio.each do |m|
+      total_days += m.expected_days
       audio_total_days += m.expected_days
       audio_complete_days += m.expected_days if(m.complete)
+      total_complete_days += m.expected_days if(m.complete)
     end
 
     @cutscenes.each do |m|
+      total_days += m.expected_days
       cutscenes_total_days += m.expected_days
       cutscenes_complete_days += m.expected_days if(m.complete)
+      total_complete_days += m.expected_days if(m.complete)
     end
 
     @enemies.each do |m|
+      total_days += m.expected_days
       enemies_total_days += m.expected_days
       enemies_complete_days += m.expected_days if(m.complete)
+      total_complete_days += m.expected_days if(m.complete)
     end
 
     @features.each do |m|
+      total_days += m.expected_days
       features_total_days += m.expected_days
       features_complete_days += m.expected_days if(m.complete)
+      total_complete_days += m.expected_days if(m.complete)
     end
 
     @heroes.each do |m|
+      total_days += m.expected_days
       heroes_total_days += m.expected_days
       heroes_complete_days += m.expected_days if(m.complete)
+      total_complete_days += m.expected_days if(m.complete)
     end
 
     @ui.each do |m|
+      total_days += m.expected_days
       ui_total_days += m.expected_days
       ui_complete_days += m.expected_days if(m.complete)
+      total_complete_days += m.expected_days if(m.complete)
     end
 
     # Calculate Percent
@@ -81,6 +100,7 @@ class ProgressesController < ApplicationController
     features_percent = (features_complete_days / features_total_days * 100).ceil
     heroes_percent = (heroes_complete_days / heroes_total_days * 100).ceil
     ui_percent = (ui_complete_days / ui_total_days * 100).ceil
+    total_percent = (total_complete_days / total_days * 100).ceil
     
     # Formatted
     @maps_progress = "#{maps_percent}% (#{(maps_total_days - maps_complete_days).ceil} Days Remaining)"
@@ -91,9 +111,9 @@ class ProgressesController < ApplicationController
     @features_progress = "#{features_percent}% (#{(features_total_days - features_complete_days).ceil} Days Remaining)"
     @heroes_progress = "#{heroes_percent}% (#{(heroes_total_days - heroes_complete_days).ceil} Days Remaining)"
     @ui_progress = "#{ui_percent}% (#{(ui_total_days - ui_complete_days).ceil} Days Remaining)"
+    @total_progress = "#{total_percent}% (#{(total_days - total_complete_days).ceil} Days Remaining)"
   end
 
-  # GET /progresses/1 or /progresses/1.json
   def show
   end
 

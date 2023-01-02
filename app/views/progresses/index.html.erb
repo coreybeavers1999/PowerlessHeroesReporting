@@ -11,26 +11,38 @@
   <table class="table table-sm table-striped">
     <thead class="table-dark">
       <tr>
-        <td width="70%">Description</td>
-        <td width="15%">Time (Days)</td>
-        <td width="15%" style="text-align: center">Complete</td>
+        <td width="50%">Description</td>
+        <td width="10%">Time (Days)</td>
+        <td width="10%" style="text-align: center">In Progress</td>
+        <td width="10%" style="text-align: center">Complete</td>
+        <td width="20%">Notes</td>
       </tr>
     </thead>
     <tbody>
       <% @maps.each do |p| %>
-        <tr>
-          <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
-          <td><%= p.expected_days %></td>
-          <td align="center">
-            <%= link_to update_progress_path(p.id) do %>
-              <% if p.complete %>
-                <%= image_tag 'checked.png', size: '28' %>
-              <% else %>
-                <%= image_tag 'unchecked.png', size: '28' %>
-              <% end %>
+      <tr>
+        <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
+        <td><%= p.expected_days %></td>
+        <td align="center">
+          <%= link_to update_in_progress_path(p.id) do %>
+            <% if p.in_progress %>
+              <%= image_tag 'checked.png', size: '28' %>
+            <% else %>
+              <%= image_tag 'unchecked.png', size: '28' %>
             <% end %>
-          </td>
-        </tr>
+          <% end %>
+        </td> <!-- In Progress -->
+        <td align="center">
+          <%= link_to update_progress_path(p.id) do %>
+            <% if p.complete %>
+              <%= image_tag 'checked.png', size: '28' %>
+            <% else %>
+              <%= image_tag 'unchecked.png', size: '28' %>
+            <% end %>
+          <% end %>
+        </td> <!-- Complete -->
+        <td><%= p.notes %></td>
+      </tr>
       <% end %>
     </tbody>
   </table>
@@ -41,9 +53,11 @@
   <table class="table table-sm table-striped">
     <thead class="table-dark">
     <tr>
-      <td width="70%">Description</td>
-      <td width="15%">Time (Days)</td>
-      <td width="15%" style="text-align: center">Complete</td>
+      <td width="50%">Description</td>
+      <td width="10%">Time (Days)</td>
+      <td width="10%" style="text-align: center">In Progress</td>
+      <td width="10%" style="text-align: center">Complete</td>
+      <td width="20%">Notes</td>
     </tr>
     </thead>
     <tbody>
@@ -52,6 +66,15 @@
         <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
         <td><%= p.expected_days %></td>
         <td align="center">
+          <%= link_to update_in_progress_path(p.id) do %>
+            <% if p.in_progress %>
+              <%= image_tag 'checked.png', size: '28' %>
+            <% else %>
+              <%= image_tag 'unchecked.png', size: '28' %>
+            <% end %>
+          <% end %>
+        </td> <!-- In Progress -->
+        <td align="center">
           <%= link_to update_progress_path(p.id) do %>
             <% if p.complete %>
               <%= image_tag 'checked.png', size: '28' %>
@@ -59,7 +82,8 @@
               <%= image_tag 'unchecked.png', size: '28' %>
             <% end %>
           <% end %>
-        </td>
+        </td> <!-- Complete -->
+        <td><%= p.notes %></td>
       </tr>
     <% end %>
     </tbody>
@@ -71,9 +95,11 @@
   <table class="table table-sm table-striped">
     <thead class="table-dark">
     <tr>
-      <td width="70%">Description</td>
-      <td width="15%">Time (Days)</td>
-      <td width="15%" style="text-align: center">Complete</td>
+      <td width="50%">Description</td>
+      <td width="10%">Time (Days)</td>
+      <td width="10%" style="text-align: center">In Progress</td>
+      <td width="10%" style="text-align: center">Complete</td>
+      <td width="20%">Notes</td>
     </tr>
     </thead>
     <tbody>
@@ -82,6 +108,15 @@
         <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
         <td><%= p.expected_days %></td>
         <td align="center">
+          <%= link_to update_in_progress_path(p.id) do %>
+            <% if p.in_progress %>
+              <%= image_tag 'checked.png', size: '28' %>
+            <% else %>
+              <%= image_tag 'unchecked.png', size: '28' %>
+            <% end %>
+          <% end %>
+        </td> <!-- In Progress -->
+        <td align="center">
           <%= link_to update_progress_path(p.id) do %>
             <% if p.complete %>
               <%= image_tag 'checked.png', size: '28' %>
@@ -89,7 +124,8 @@
               <%= image_tag 'unchecked.png', size: '28' %>
             <% end %>
           <% end %>
-        </td>
+        </td> <!-- Complete -->
+        <td><%= p.notes %></td>
       </tr>
     <% end %>
     </tbody>
@@ -101,9 +137,11 @@
   <table class="table table-sm table-striped">
     <thead class="table-dark">
     <tr>
-      <td width="70%">Description</td>
-      <td width="15%">Time (Days)</td>
-      <td width="15%" style="text-align: center">Complete</td>
+      <td width="50%">Description</td>
+      <td width="10%">Time (Days)</td>
+      <td width="10%" style="text-align: center">In Progress</td>
+      <td width="10%" style="text-align: center">Complete</td>
+      <td width="20%">Notes</td>
     </tr>
     </thead>
     <tbody>
@@ -112,6 +150,15 @@
         <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
         <td><%= p.expected_days %></td>
         <td align="center">
+          <%= link_to update_in_progress_path(p.id) do %>
+            <% if p.in_progress %>
+              <%= image_tag 'checked.png', size: '28' %>
+            <% else %>
+              <%= image_tag 'unchecked.png', size: '28' %>
+            <% end %>
+          <% end %>
+        </td> <!-- In Progress -->
+        <td align="center">
           <%= link_to update_progress_path(p.id) do %>
             <% if p.complete %>
               <%= image_tag 'checked.png', size: '28' %>
@@ -119,7 +166,8 @@
               <%= image_tag 'unchecked.png', size: '28' %>
             <% end %>
           <% end %>
-        </td>
+        </td> <!-- Complete -->
+        <td><%= p.notes %></td>
       </tr>
     <% end %>
     </tbody>
@@ -131,9 +179,11 @@
   <table class="table table-sm table-striped">
     <thead class="table-dark">
     <tr>
-      <td width="70%">Description</td>
-      <td width="15%">Time (Days)</td>
-      <td width="15%" style="text-align: center">Complete</td>
+      <td width="50%">Description</td>
+      <td width="10%">Time (Days)</td>
+      <td width="10%" style="text-align: center">In Progress</td>
+      <td width="10%" style="text-align: center">Complete</td>
+      <td width="20%">Notes</td>
     </tr>
     </thead>
     <tbody>
@@ -142,6 +192,15 @@
         <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
         <td><%= p.expected_days %></td>
         <td align="center">
+          <%= link_to update_in_progress_path(p.id) do %>
+            <% if p.in_progress %>
+              <%= image_tag 'checked.png', size: '28' %>
+            <% else %>
+              <%= image_tag 'unchecked.png', size: '28' %>
+            <% end %>
+          <% end %>
+        </td> <!-- In Progress -->
+        <td align="center">
           <%= link_to update_progress_path(p.id) do %>
             <% if p.complete %>
               <%= image_tag 'checked.png', size: '28' %>
@@ -149,7 +208,8 @@
               <%= image_tag 'unchecked.png', size: '28' %>
             <% end %>
           <% end %>
-        </td>
+        </td> <!-- Complete -->
+        <td><%= p.notes %></td>
       </tr>
     <% end %>
     </tbody>
@@ -161,9 +221,11 @@
   <table class="table table-sm table-striped">
     <thead class="table-dark">
     <tr>
-      <td width="70%">Description</td>
-      <td width="15%">Time (Days)</td>
-      <td width="15%" style="text-align: center">Complete</td>
+      <td width="50%">Description</td>
+      <td width="10%">Time (Days)</td>
+      <td width="10%" style="text-align: center">In Progress</td>
+      <td width="10%" style="text-align: center">Complete</td>
+      <td width="20%">Notes</td>
     </tr>
     </thead>
     <tbody>
@@ -172,6 +234,15 @@
         <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
         <td><%= p.expected_days %></td>
         <td align="center">
+          <%= link_to update_in_progress_path(p.id) do %>
+            <% if p.in_progress %>
+              <%= image_tag 'checked.png', size: '28' %>
+            <% else %>
+              <%= image_tag 'unchecked.png', size: '28' %>
+            <% end %>
+          <% end %>
+        </td> <!-- In Progress -->
+        <td align="center">
           <%= link_to update_progress_path(p.id) do %>
             <% if p.complete %>
               <%= image_tag 'checked.png', size: '28' %>
@@ -179,7 +250,8 @@
               <%= image_tag 'unchecked.png', size: '28' %>
             <% end %>
           <% end %>
-        </td>
+        </td> <!-- Complete -->
+        <td><%= p.notes %></td>
       </tr>
     <% end %>
     </tbody>
@@ -191,9 +263,11 @@
   <table class="table table-sm table-striped">
     <thead class="table-dark">
     <tr>
-      <td width="70%">Description</td>
-      <td width="15%">Time (Days)</td>
-      <td width="15%" style="text-align: center">Complete</td>
+      <td width="50%">Description</td>
+      <td width="10%">Time (Days)</td>
+      <td width="10%" style="text-align: center">In Progress</td>
+      <td width="10%" style="text-align: center">Complete</td>
+      <td width="20%">Notes</td>
     </tr>
     </thead>
     <tbody>
@@ -202,6 +276,15 @@
         <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
         <td><%= p.expected_days %></td>
         <td align="center">
+          <%= link_to update_in_progress_path(p.id) do %>
+            <% if p.in_progress %>
+              <%= image_tag 'checked.png', size: '28' %>
+            <% else %>
+              <%= image_tag 'unchecked.png', size: '28' %>
+            <% end %>
+          <% end %>
+        </td> <!-- In Progress -->
+        <td align="center">
           <%= link_to update_progress_path(p.id) do %>
             <% if p.complete %>
               <%= image_tag 'checked.png', size: '28' %>
@@ -209,7 +292,8 @@
               <%= image_tag 'unchecked.png', size: '28' %>
             <% end %>
           <% end %>
-        </td>
+        </td> <!-- Complete -->
+        <td><%= p.notes %></td>
       </tr>
     <% end %>
     </tbody>
@@ -221,9 +305,11 @@
   <table class="table table-sm table-striped">
     <thead class="table-dark">
     <tr>
-      <td width="70%">Description</td>
-      <td width="15%">Time (Days)</td>
-      <td width="15%" style="text-align: center">Complete</td>
+      <td width="50%">Description</td>
+      <td width="10%">Time (Days)</td>
+      <td width="10%" style="text-align: center">In Progress</td>
+      <td width="10%" style="text-align: center">Complete</td>
+      <td width="20%">Notes</td>
     </tr>
     </thead>
     <tbody>
@@ -232,6 +318,15 @@
         <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
         <td><%= p.expected_days %></td>
         <td align="center">
+          <%= link_to update_in_progress_path(p.id) do %>
+            <% if p.in_progress %>
+              <%= image_tag 'checked.png', size: '28' %>
+            <% else %>
+              <%= image_tag 'unchecked.png', size: '28' %>
+            <% end %>
+          <% end %>
+        </td> <!-- In Progress -->
+        <td align="center">
           <%= link_to update_progress_path(p.id) do %>
             <% if p.complete %>
               <%= image_tag 'checked.png', size: '28' %>
@@ -239,7 +334,8 @@
               <%= image_tag 'unchecked.png', size: '28' %>
             <% end %>
           <% end %>
-        </td>
+        </td> <!-- Complete -->
+        <td><%= p.notes %></td>
       </tr>
     <% end %>
     </tbody>

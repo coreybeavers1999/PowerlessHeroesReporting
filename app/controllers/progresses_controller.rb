@@ -151,6 +151,13 @@ class ProgressesController < ApplicationController
     redirect_to progresses_path
   end
 
+  def mark_in_progress
+    process = Progress.find(params[:id])
+    process.in_progress = !process.in_progress
+    process.save
+    redirect_to progresses_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_progress
@@ -159,6 +166,6 @@ class ProgressesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def progress_params
-      params.require(:progress).permit(:category, :description, :expected_days, :complete)
+      params.require(:progress).permit(:category, :description, :expected_days, :complete, :notes)
     end
 end

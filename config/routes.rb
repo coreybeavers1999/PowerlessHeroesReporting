@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'ranking/index'
   resources :progresses
   get 'update_progress/:id' => 'progresses#mark_complete', as: 'update_progress'
+  get 'update_in_progress/:id' => 'progresses#mark_in_progress', as: 'update_in_progress'
 
   # API
   post '/add_weapon' => 'api#add_all_weapons'

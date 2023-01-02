@@ -28,6 +28,15 @@
     <%= form.number_field :expected_days, max: 99, value: 1 %>
   </div>
 
+  <br/>
+
+  <% unless @progress.new_record? %>
+    <div>
+      <h5><%= form.label :notes, style: "display: block" %></h5>
+      <%= form.text_area :notes, size: '100x10' %>
+    </div>
+  <% end %>
+
   <br/><br/>
 
   <div>

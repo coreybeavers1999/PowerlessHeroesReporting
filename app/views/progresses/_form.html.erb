@@ -14,26 +14,31 @@
   <div>
     <%= form.label :description, style: "display: block" %>
     <%= form.text_field :description, size: '100%' %>
-  </div>
+  </div> <!-- Description -->
 
   <div>
     <%= form.label :category, style: "display: block" %>
     <%= form.select :category, [['Maps','maps'], ['Models','models'], ['Audio','audio'],
                                 ['Cutscenes','cutscenes'], ['Enemies','enemies'], ['Features','features'],
                                 ['Heroes','heroes'], ['UI','ui']] %>
-  </div>
+  </div> <!-- Category -->
 
   <div>
     <%= form.label :expected_days, style: "display: block" %>
     <%= form.number_field :expected_days, max: 99, value: 1 %>
-  </div>
+  </div> <!-- Expected Days -->
+
+  <div>
+    <%= form.label :assigned, style: "display: block" %>
+    <%= form.select :assigned, [['Corey','Corey'], ['Syd','Syd'], ['Unassigned','Unassigned']] %>
+  </div> <!-- Category -->
 
   <br/>
 
   <div>
     <h5><%= form.label :notes, style: "display: block" %></h5>
     <%= form.text_area :notes, size: '100x10' %>
-  </div>
+  </div> <!-- Notes -->
 
   <br/><br/>
 

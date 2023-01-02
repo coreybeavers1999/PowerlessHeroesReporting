@@ -1,34 +1,119 @@
+<style>
+    .table-hover tbody tr:hover td {
+        background: #eaeae2;
+    }
+</style>
+
 <p style="color: green"><%= notice %></p>
 
 <div style="width: 100%; text-align: center;">
   <h2>
-    <%= @total_progress %>
+    Progress: <%= @total_progress %>
   </h2>
+</div> <!-- Total Progress -->
+
+<br/>
+
+<div style="width:100%" class="container">
+  <div>
+    <h3 style="text-align:center">To Do</h3>
+  </div> <!-- Title -->
+  <div class="row">
+    <div class="col">
+      <table class="table table-sm table-hover table-striped">
+        <thead class="table-dark">
+          <td width="40%">Corey's</td>
+          <td width="10%" style="text-align: center">In Progress</td>
+          <td width="10%" style="text-align: center">Complete</td>
+        </thead>
+        <tbody>
+          <% @corey_todo.each do |p| %>
+            <tr>
+              <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
+              <td align="center">
+                <%= link_to update_in_progress_path(p.id) do %>
+                  <% if p.in_progress %>
+                    <%= image_tag 'checked.png', size: '28' %>
+                  <% else %>
+                    <%= image_tag 'unchecked.png', size: '28' %>
+                  <% end %>
+                <% end %>
+              </td> <!-- In Progress -->
+              <td align="center">
+                <%= link_to update_progress_path(p.id) do %>
+                  <% if p.complete %>
+                    <%= image_tag 'checked.png', size: '28' %>
+                  <% else %>
+                    <%= image_tag 'unchecked.png', size: '28' %>
+                  <% end %>
+                <% end %>
+              </td> <!-- Complete -->
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div> <!-- Corey's Todo -->
+    <div class="col">
+      <table class="table table-sm table-hover table-striped">
+        <thead class="table-dark">
+        <td width="40%">Syd's</td>
+        <td width="10%" style="text-align: center">In Progress</td>
+        <td width="10%" style="text-align: center">Complete</td>
+        </thead>
+        <tbody>
+        <% @syd_todo.each do |p| %>
+          <tr>
+            <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
+            <td align="center">
+              <%= link_to update_in_progress_path(p.id) do %>
+                <% if p.in_progress %>
+                  <%= image_tag 'checked.png', size: '28' %>
+                <% else %>
+                  <%= image_tag 'unchecked.png', size: '28' %>
+                <% end %>
+              <% end %>
+            </td> <!-- In Progress -->
+            <td align="center">
+              <%= link_to update_progress_path(p.id) do %>
+                <% if p.complete %>
+                  <%= image_tag 'checked.png', size: '28' %>
+                <% else %>
+                  <%= image_tag 'unchecked.png', size: '28' %>
+                <% end %>
+              <% end %>
+            </td> <!-- Complete -->
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div> <!-- Syd's Todo -->
+  </div>
 </div>
+
+<br/>
 
 <%= link_to new_progress_path do %>
     <%= image_tag 'new.png', height: '32' %>
-<% end %>
+<% end %> <!-- Create New -->
 
 <br/><br/>
 
 <div>
   <h3>Maps <%= @maps_progress %></h3>
-  <table class="table table-sm table-striped">
+  <table class="table table-sm table-hover table-striped">
     <thead class="table-dark">
       <tr>
-        <td width="50%">Description</td>
-        <td width="10%">Time (Days)</td>
+        <td width="40%">Description</td>
+        <td width="40%">Notes</td>
         <td width="10%" style="text-align: center">In Progress</td>
         <td width="10%" style="text-align: center">Complete</td>
-        <td width="20%">Notes</td>
       </tr>
     </thead>
     <tbody>
       <% @maps.each do |p| %>
       <tr>
         <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
-        <td><%= p.expected_days %></td>
+        <td><%= p.notes %></td>
         <td align="center">
           <%= link_to update_in_progress_path(p.id) do %>
             <% if p.in_progress %>
@@ -47,7 +132,6 @@
             <% end %>
           <% end %>
         </td> <!-- Complete -->
-        <td><%= p.notes %></td>
       </tr>
       <% end %>
     </tbody>
@@ -56,21 +140,20 @@
 
 <div>
   <h3>Models <%= @models_progress %></h3>
-  <table class="table table-sm table-striped">
+  <table class="table table-sm table-hover table-striped">
     <thead class="table-dark">
     <tr>
-      <td width="50%">Description</td>
-      <td width="10%">Time (Days)</td>
+      <td width="40%">Description</td>
+      <td width="40%">Notes</td>
       <td width="10%" style="text-align: center">In Progress</td>
       <td width="10%" style="text-align: center">Complete</td>
-      <td width="20%">Notes</td>
     </tr>
     </thead>
     <tbody>
     <% @models.each do |p| %>
       <tr>
         <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
-        <td><%= p.expected_days %></td>
+        <td><%= p.notes %></td>
         <td align="center">
           <%= link_to update_in_progress_path(p.id) do %>
             <% if p.in_progress %>
@@ -89,7 +172,6 @@
             <% end %>
           <% end %>
         </td> <!-- Complete -->
-        <td><%= p.notes %></td>
       </tr>
     <% end %>
     </tbody>
@@ -98,21 +180,20 @@
 
 <div>
   <h3>Audio <%= @audio_progress %></h3>
-  <table class="table table-sm table-striped">
+  <table class="table table-sm table-hover table-striped">
     <thead class="table-dark">
     <tr>
-      <td width="50%">Description</td>
-      <td width="10%">Time (Days)</td>
+      <td width="40%">Description</td>
+      <td width="40%">Notes</td>
       <td width="10%" style="text-align: center">In Progress</td>
       <td width="10%" style="text-align: center">Complete</td>
-      <td width="20%">Notes</td>
     </tr>
     </thead>
     <tbody>
     <% @audio.each do |p| %>
       <tr>
         <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
-        <td><%= p.expected_days %></td>
+        <td><%= p.notes %></td>
         <td align="center">
           <%= link_to update_in_progress_path(p.id) do %>
             <% if p.in_progress %>
@@ -131,7 +212,6 @@
             <% end %>
           <% end %>
         </td> <!-- Complete -->
-        <td><%= p.notes %></td>
       </tr>
     <% end %>
     </tbody>
@@ -140,21 +220,20 @@
 
 <div>
   <h3>Cutscenes <%= @cutscenes_progress %></h3>
-  <table class="table table-sm table-striped">
+  <table class="table table-sm table-hover table-striped">
     <thead class="table-dark">
     <tr>
-      <td width="50%">Description</td>
-      <td width="10%">Time (Days)</td>
+      <td width="40%">Description</td>
+      <td width="40%">Notes</td>
       <td width="10%" style="text-align: center">In Progress</td>
       <td width="10%" style="text-align: center">Complete</td>
-      <td width="20%">Notes</td>
     </tr>
     </thead>
     <tbody>
     <% @cutscenes.each do |p| %>
       <tr>
         <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
-        <td><%= p.expected_days %></td>
+        <td><%= p.notes %></td>
         <td align="center">
           <%= link_to update_in_progress_path(p.id) do %>
             <% if p.in_progress %>
@@ -173,7 +252,6 @@
             <% end %>
           <% end %>
         </td> <!-- Complete -->
-        <td><%= p.notes %></td>
       </tr>
     <% end %>
     </tbody>
@@ -182,21 +260,20 @@
 
 <div>
   <h3>Enemies <%= @enemies_progress %></h3>
-  <table class="table table-sm table-striped">
+  <table class="table table-sm table-hover table-striped">
     <thead class="table-dark">
     <tr>
-      <td width="50%">Description</td>
-      <td width="10%">Time (Days)</td>
+      <td width="40%">Description</td>
+      <td width="40%">Notes</td>
       <td width="10%" style="text-align: center">In Progress</td>
       <td width="10%" style="text-align: center">Complete</td>
-      <td width="20%">Notes</td>
     </tr>
     </thead>
     <tbody>
     <% @enemies.each do |p| %>
       <tr>
         <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
-        <td><%= p.expected_days %></td>
+        <td><%= p.notes %></td>
         <td align="center">
           <%= link_to update_in_progress_path(p.id) do %>
             <% if p.in_progress %>
@@ -215,7 +292,6 @@
             <% end %>
           <% end %>
         </td> <!-- Complete -->
-        <td><%= p.notes %></td>
       </tr>
     <% end %>
     </tbody>
@@ -224,21 +300,20 @@
 
 <div>
   <h3>Features <%= @features_progress %></h3>
-  <table class="table table-sm table-striped">
+  <table class="table table-sm table-hover table-striped">
     <thead class="table-dark">
     <tr>
-      <td width="50%">Description</td>
-      <td width="10%">Time (Days)</td>
+      <td width="40%">Description</td>
+      <td width="40%">Notes</td>
       <td width="10%" style="text-align: center">In Progress</td>
       <td width="10%" style="text-align: center">Complete</td>
-      <td width="20%">Notes</td>
     </tr>
     </thead>
     <tbody>
     <% @features.each do |p| %>
       <tr>
         <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
-        <td><%= p.expected_days %></td>
+        <td><%= p.notes %></td>
         <td align="center">
           <%= link_to update_in_progress_path(p.id) do %>
             <% if p.in_progress %>
@@ -257,7 +332,6 @@
             <% end %>
           <% end %>
         </td> <!-- Complete -->
-        <td><%= p.notes %></td>
       </tr>
     <% end %>
     </tbody>
@@ -266,21 +340,20 @@
 
 <div>
   <h3>Heroes <%= @heroes_progress %></h3>
-  <table class="table table-sm table-striped">
+  <table class="table table-sm table-hover table-striped">
     <thead class="table-dark">
     <tr>
-      <td width="50%">Description</td>
-      <td width="10%">Time (Days)</td>
+      <td width="40%">Description</td>
+      <td width="40%">Notes</td>
       <td width="10%" style="text-align: center">In Progress</td>
       <td width="10%" style="text-align: center">Complete</td>
-      <td width="20%">Notes</td>
     </tr>
     </thead>
     <tbody>
     <% @heroes.each do |p| %>
       <tr>
         <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
-        <td><%= p.expected_days %></td>
+        <td><%= p.notes %></td>
         <td align="center">
           <%= link_to update_in_progress_path(p.id) do %>
             <% if p.in_progress %>
@@ -299,7 +372,6 @@
             <% end %>
           <% end %>
         </td> <!-- Complete -->
-        <td><%= p.notes %></td>
       </tr>
     <% end %>
     </tbody>
@@ -308,21 +380,20 @@
 
 <div>
   <h3>UI <%= @ui_progress %></h3>
-  <table class="table table-sm table-striped">
+  <table class="table table-sm table-hover table-striped">
     <thead class="table-dark">
     <tr>
-      <td width="50%">Description</td>
-      <td width="10%">Time (Days)</td>
+      <td width="40%">Description</td>
+      <td width="40%">Notes</td>
       <td width="10%" style="text-align: center">In Progress</td>
       <td width="10%" style="text-align: center">Complete</td>
-      <td width="20%">Notes</td>
     </tr>
     </thead>
     <tbody>
     <% @ui.each do |p| %>
       <tr>
         <td><%= link_to p.description, edit_progress_path(p.id), { style: "color: black; text-decoration: none;" } %></td>
-        <td><%= p.expected_days %></td>
+        <td><%= p.notes %></td>
         <td align="center">
           <%= link_to update_in_progress_path(p.id) do %>
             <% if p.in_progress %>
@@ -341,7 +412,6 @@
             <% end %>
           <% end %>
         </td> <!-- Complete -->
-        <td><%= p.notes %></td>
       </tr>
     <% end %>
     </tbody>

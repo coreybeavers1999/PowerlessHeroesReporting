@@ -11,6 +11,9 @@ class ProgressesController < ApplicationController
     @features = Progress.all.where(category: 'features').order(:description)
     @heroes = Progress.all.where(category: 'heroes').order(:description)
     @ui = Progress.all.where(category: 'ui').order(:description)
+    @corey_todo = Progress.all.where(assigned: 'Corey').order(:description)
+    @syd_todo = Progress.all.where(assigned: 'Syd').order(:description)
+
     
     # Percent Variables
     total_complete_days = 0.0
@@ -167,6 +170,8 @@ class ProgressesController < ApplicationController
   def mark_complete
     process = Progress.find(params[:id])
     process.complete = !process.complete
+    process.assigned = 'Unassigned'
+    process.in_progress = false
     process.save
     redirect_to progresses_path
   end
@@ -174,6 +179,7 @@ class ProgressesController < ApplicationController
   def mark_in_progress
     process = Progress.find(params[:id])
     process.in_progress = !process.in_progress
+    process.complete = false
     process.save
     redirect_to progresses_path
   end
@@ -186,6 +192,6 @@ class ProgressesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def progress_params
-      params.require(:progress).permit(:category, :description, :expected_days, :complete, :notes)
+      params.require(:progress).permit(:category, :description, :expected_days, :complete, :notes, :assigned)
     end
 end

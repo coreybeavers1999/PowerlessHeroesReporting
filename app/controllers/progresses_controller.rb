@@ -11,6 +11,8 @@ class ProgressesController < ApplicationController
     @features = Progress.all.where(category: 'features').order(:description)
     @heroes = Progress.all.where(category: 'heroes').order(:description)
     @ui = Progress.all.where(category: 'ui').order(:description)
+    @bugs = Progress.all.where(category: 'bugs').order(:description)
+
     @corey_todo = Progress.all.where(assigned: 'Corey').order(:description)
     @syd_todo = Progress.all.where(assigned: 'Syd').order(:description)
 

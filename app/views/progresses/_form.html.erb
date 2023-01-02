@@ -30,12 +30,10 @@
 
   <br/>
 
-  <% unless @progress.new_record? %>
-    <div>
-      <h5><%= form.label :notes, style: "display: block" %></h5>
-      <%= form.text_area :notes, size: '100x10' %>
-    </div>
-  <% end %>
+  <div>
+    <h5><%= form.label :notes, style: "display: block" %></h5>
+    <%= form.text_area :notes, size: '100x10' %>
+  </div>
 
   <br/><br/>
 
